@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('images/dessert.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.85);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #d94c8a;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.5rem;
+  color: #6a1b9a;
+}
+.footer {
+  background-color: #222;
+  color: #fffacd;
+  text-align: center;
+  padding: 8px 0;
+  z-index: 1;
+  position: relative;
+}

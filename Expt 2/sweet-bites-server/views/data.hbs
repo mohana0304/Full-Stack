@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Data</title>
+</head>
+<body>
+  <h2>Dessert Entries</h2>
+
+  {{#if entries}}
+    <ul>
+      {{#each entries}}
+        <li>{{this.name}} loves {{this.dessert}} (Rating: {{this.rating}})</li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No entries available.</p>
+  {{/if}}
+</body>
+</html>

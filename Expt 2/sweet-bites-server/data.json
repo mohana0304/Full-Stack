@@ -1,0 +1,17 @@
+[
+  {
+    "name": "mona",
+    "dessert": "cake",
+    "rating": "5"
+  },
+  {
+    "name": "priya",
+    "dessert": "cake",
+    "rating": "3"
+  },
+  {
+    "name": "sathiya",
+    "dessert": "chocolate",
+    "rating": "5"
+  }
+]
