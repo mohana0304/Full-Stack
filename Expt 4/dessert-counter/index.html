@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dessertApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Sweet Bites Counter</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+    }
+    h1 {
+      font-size: 40px;
+      color: #8b0000;
+    }
+    h2 {
+      font-size: 28px;
+      margin: 20px 0;
+      color: #333;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body ng-controller="DessertController">
+  <h1>🍰 Sweet Bites Dessert Counter 🍩</h1>
+  <h2>Total Desserts Sold: {{ count }}</h2>
+
+  <button ng-click="increment()">Sell One</button>
+  <button ng-click="decrement()">Undo One</button>
+  <button ng-click="reset()">Reset</button>
+</body>
+</html>
