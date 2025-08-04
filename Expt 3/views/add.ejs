@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head><title>Add Student</title><link rel="stylesheet" href="/styles.css" /></head>
 <body>
@@ -9,5 +9,92 @@
     <input name="course" placeholder="Course" required /><br>
     <button type="submit">Add Student</button>
   </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📜 Add Student | Vintage School</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <style>
+    .form-container {
+      background: rgba(255, 248, 220, 0.95);
+      padding: 40px;
+      max-width: 450px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(100, 60, 40, 0.4);
+      font-family: 'Cinzel', serif;
+      position: relative;
+    }
+
+    .form-container h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #5a3e2b;
+    }
+
+    .form-container label {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #3e2f1c;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #a58b69;
+      background-color: #fff7e0;
+      font-size: 16px;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #a58b69;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #8b5e3c;
+    }
+  </style>
+</head>
+<body>
+
+ 
+
+  <div class="form-container">
+    <h1>📝 Add New Student</h1>
+
+    <form action="/add" method="POST">
+      <label for="name">👤 Full Name:</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email">📧 Email:</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="course">📘 Course:</label>
+      <input type="text" name="course" id="course" required>
+
+      <label for="age">🎂 Age:</label>
+      <input type="number" name="age" id="age" required>
+
+      <button type="submit">➕ Add Student</button>
+    </form>
+  </div>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: Arial;
   text-align: center;
   background: #f0f0f0;
@@ -22,4 +22,59 @@ li {
   margin: 5px auto;
   width: 300px;
   text-align: left;
+} */
+
+
+body {
+  font-family: 'Cursive', 'Segoe UI', sans-serif;
+  text-align: center;
+  background: linear-gradient(to right, #f8cdda, #f0e3ff);
+  padding: 50px;
+  color: #4b2e83;
 }
+
+input {
+  padding: 10px;
+  width: 220px;
+  border: 2px solid #d4a5ff;
+  border-radius: 10px;
+  background-color: #fff0f5;
+  font-size: 16px;
+  box-shadow: 0 0 10px #e0b3ff;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #dda0dd;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ba55d3;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 12px;
+  background: #fffafc;
+  margin: 10px auto;
+  width: 320px;
+  text-align: left;
+  border-radius: 12px;
+  border: 1px solid #d8bfd8;
+  box-shadow: 0 0 8px rgba(123, 104, 238, 0.3);
+  font-size: 18px;
+}
+
