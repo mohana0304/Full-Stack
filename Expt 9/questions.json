@@ -114,11 +114,7 @@
       "options": [".class", ".java", ".exe", ".bin"],
       "answer": ".class"
     },
-    {
-      "question": "Which keyword is used to create a subclass in Java?",
-      "options": ["extends", "implements", "inherits", "subclass"],
-      "answer": "extends"
-    },
+    
     {
       "question": "Which method is the entry point for any Java application?",
       "options": ["start()", "run()", "main()", "init()"],
