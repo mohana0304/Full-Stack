@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MCQ Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 MCQ Quiz App</h1>
+    <select id="topicSelect">
+      <option value="math">Math</option>
+      <option value="science">Science</option>
+    </select>
+  
+    <button onclick="loadQuestions()">Start Quiz</button>
+
+    <div id="quiz-container"></div>
+<div id="score" style="display: none;"></div>
+
+    <form id="quizForm" class="hidden"></form>
+    <div id="scorePage" class="hidden"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

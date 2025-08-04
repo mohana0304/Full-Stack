@@ -1,0 +1,120 @@
+/* 
+ body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 50px;
+  background: url('https://img.freepik.com/free-psd/3d-rendering-questions-background_23-2151455640.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 100%;
+  text-align: left;
+}
+
+h1 {
+  text-align: center;
+  color: #7b1fa2;
+}
+
+select, button {
+  padding: 10px 15px;
+  margin: 15px 0;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #7b1fa2;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6a1b9a;
+}
+
+#quiz-container div {
+  margin-bottom: 20px;
+}
+
+#quiz-container p {
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+label {
+  display: block;
+  margin: 4px 0;
+  cursor: pointer;
+} */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://img.freepik.com/free-psd/3d-rendering-questions-background_23-2151455640.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+button {
+  background-color: #7b1fa2;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #6a1b9a;
+}
+select,
+button {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px 5px;
+}
+
+#quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align left */
+  margin-top: 30px;
+}
+
+#quiz-container div {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#quiz-container p {
+  margin: 5px 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+#quiz-container label {
+  display: block;
+  margin-left: 10px;
+  text-align: left;
+}
