@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calculatorApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairy Tale Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="CalculatorController">
+    <div class="fairy-dust"></div>
+    <div class="fairy-dust"></div>
+    <div class="fairy-dust"></div>
+    
+    <div class="calculator-container">
+        <div class="magical-border">
+            <div class="calculator">
+                <div class="crystal-display">
+                    <div class="previous-operand">{{ previousOperand }} {{ operation }}</div>
+                    <div class="current-operand">{{ currentOperand || '0' }}</div>
+                    <div class="angle-mode">{{ angleMode }}</div>
+                    <div class="magical-sparkles"></div>
+                </div>
+                
+                <div class="mode-toggle">
+                    <button class="mode-btn fairy-btn" ng-class="{ active: !scientificMode }" ng-click="toggleMode()">
+                        <span class="btn-sparkle">✨</span>
+                        Standard
+                    </button>
+                    <button class="mode-btn fairy-btn" ng-class="{ active: scientificMode }" ng-click="toggleMode()">
+                        <span class="btn-sparkle">🔮</span>
+                        Magical
+                    </button>
+                </div>
+                
+                <div class="angle-toggle" ng-show="scientificMode">
+                    <button class="angle-btn fairy-btn" ng-class="{ active: angleMode === 'DEG' }" ng-click="setAngleMode('DEG')">
+                        <span class="btn-sparkle">🌟</span>
+                        DEG
+                    </button>
+                    <button class="angle-btn fairy-btn" ng-class="{ active: angleMode === 'RAD' }" ng-click="setAngleMode('RAD')">
+                        <span class="btn-sparkle">🌙</span>
+                        RAD
+                    </button>
+                </div>
+                
+                <div class="buttons">
+                    <!-- Scientific Functions Row 1 -->
+                    <div class="scientific-row" ng-show="scientificMode">
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('sin')">
+                            <span class="btn-sparkle">✨</span>sin
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('cos')">
+                            <span class="btn-sparkle">✨</span>cos
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('tan')">
+                            <span class="btn-sparkle">✨</span>tan
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('log')">
+                            <span class="btn-sparkle">🔮</span>log
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('ln')">
+                            <span class="btn-sparkle">🔮</span>ln
+                        </button>
+                    </div>
+                    
+                    <!-- Scientific Functions Row 2 -->
+                    <div class="scientific-row" ng-show="scientificMode">
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('asin')">
+                            <span class="btn-sparkle">🌟</span>sin⁻¹
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('acos')">
+                            <span class="btn-sparkle">🌟</span>cos⁻¹
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('atan')">
+                            <span class="btn-sparkle">🌟</span>tan⁻¹
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('sqrt')">
+                            <span class="btn-sparkle">🌿</span>√
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('pow')">
+                            <span class="btn-sparkle">⚡</span>xʸ
+                        </button>
+                    </div>
+                    
+                    <!-- Scientific Functions Row 3 -->
+                    <div class="scientific-row" ng-show="scientificMode">
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('factorial')">
+                            <span class="btn-sparkle">🎀</span>x!
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('exp')">
+                            <span class="btn-sparkle">🔥</span>eˣ
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('abs')">
+                            <span class="btn-sparkle">💎</span>|x|
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('pi')">
+                            <span class="btn-sparkle">🌺</span>π
+                        </button>
+                        <button class="btn btn-scientific fairy-btn" ng-click="scientificFunction('e')">
+                            <span class="btn-sparkle">🌸</span>e
+                        </button>
+                    </div>
+                    
+                    <!-- Main Calculator Buttons -->
+                    <div class="main-buttons">
+                        <button class="btn btn-clear fairy-btn" ng-click="clear()">
+                            <span class="btn-sparkle">🧹</span>AC
+                        </button>
+                        <button class="btn btn-operator fairy-btn" ng-click="delete()">
+                            <span class="btn-sparkle">🪄</span>DEL
+                        </button>
+                        <button class="btn btn-operator fairy-btn" ng-click="chooseOperation('%')">
+                            <span class="btn-sparkle">💫</span>%
+                        </button>
+                        <button class="btn btn-operator fairy-btn" ng-click="chooseOperation('÷')">
+                            <span class="btn-sparkle">🌙</span>÷
+                        </button>
+                        
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('7')">
+                            <span class="btn-sparkle">7</span>
+                        </button>
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('8')">
+                            <span class="btn-sparkle">8</span>
+                        </button>
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('9')">
+                            <span class="btn-sparkle">9</span>
+                        </button>
+                        <button class="btn btn-operator fairy-btn" ng-click="chooseOperation('×')">
+                            <span class="btn-sparkle">⭐</span>×
+                        </button>
+                        
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('4')">
+                            <span class="btn-sparkle">4</span>
+                        </button>
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('5')">
+                            <span class="btn-sparkle">5</span>
+                        </button>
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('6')">
+                            <span class="btn-sparkle">6</span>
+                        </button>
+                        <button class="btn btn-operator fairy-btn" ng-click="chooseOperation('-')">
+                            <span class="btn-sparkle">🌺</span>-
+                        </button>
+                        
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('1')">
+                            <span class="btn-sparkle">1</span>
+                        </button>
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('2')">
+                            <span class="btn-sparkle">2</span>
+                        </button>
+                        <button class="btn btn-number fairy-btn" ng-click="appendNumber('3')">
+                            <span class="btn-sparkle">3</span>
+                        </button>
+                        <button class="btn btn-operator fairy-btn" ng-click="chooseOperation('+')">
+                            <span class="btn-sparkle">✨</span>+
+                        </button>
+                        
+                        <button class="btn btn-number btn-zero fairy-btn" ng-click="appendNumber('0')">
+                            <span class="btn-sparkle">0</span>
+                        </button>
+                        <button class="btn btn-number fairy-btn" ng-click="appendDecimal()">
+                            <span class="btn-sparkle">💎</span>.
+                        </button>
+                        <button class="btn btn-equals fairy-btn" ng-click="compute()">
+                            <span class="btn-sparkle">🌈</span>=
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html> 

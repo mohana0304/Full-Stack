@@ -1,0 +1,464 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Fairy dust animation */
+.fairy-dust {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #fff, #ffd700, #ff69b4);
+    border-radius: 50%;
+    animation: fairyDust 8s linear infinite;
+    z-index: 1;
+}
+
+.fairy-dust:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
+.fairy-dust:nth-child(2) {
+    left: 50%;
+    animation-delay: 4s;
+    animation-duration: 10s;
+}
+
+.fairy-dust:nth-child(3) {
+    left: 80%;
+    animation-delay: 8s;
+    animation-duration: 14s;
+}
+
+@keyframes fairyDust {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.calculator-container {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 10;
+}
+
+.magical-border {
+    background: linear-gradient(45deg, #ff69b4, #ffd700, #87ceeb, #98fb98, #dda0dd);
+    padding: 8px;
+    border-radius: 30px;
+    box-shadow: 
+        0 0 30px rgba(255, 105, 180, 0.5),
+        0 0 60px rgba(255, 215, 0, 0.3),
+        0 0 90px rgba(135, 206, 235, 0.2);
+    animation: borderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+    0% {
+        box-shadow: 
+            0 0 30px rgba(255, 105, 180, 0.5),
+            0 0 60px rgba(255, 215, 0, 0.3),
+            0 0 90px rgba(135, 206, 235, 0.2);
+    }
+    100% {
+        box-shadow: 
+            0 0 40px rgba(255, 105, 180, 0.7),
+            0 0 80px rgba(255, 215, 0, 0.5),
+            0 0 120px rgba(135, 206, 235, 0.4);
+    }
+}
+
+.calculator {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.crystal-display {
+    background: linear-gradient(145deg, #2c1810, #4a2c1a);
+    border-radius: 20px;
+    padding: 25px 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 
+        inset 0 4px 8px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 215, 0, 0.3);
+    border: 2px solid #ffd700;
+    position: relative;
+    overflow: hidden;
+}
+
+.magical-sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #ffd700, transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #ff69b4, transparent),
+        radial-gradient(2px 2px at 160px 30px, #87ceeb, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: sparkle 4s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes sparkle {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-200px); }
+}
+
+.previous-operand {
+    color: rgba(255, 215, 0, 0.8);
+    font-size: 16px;
+    margin-bottom: 8px;
+    min-height: 20px;
+    font-weight: 300;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.current-operand {
+    color: #fff;
+    font-size: 42px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.angle-mode {
+    color: #98fb98;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    text-align: left;
+    text-shadow: 0 0 10px rgba(152, 251, 152, 0.5);
+}
+
+.mode-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.mode-btn.active {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    transform: scale(1.05);
+}
+
+.mode-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+}
+
+.angle-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.angle-btn {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.angle-btn.active {
+    background: linear-gradient(135deg, #87ceeb, #4169e1);
+    box-shadow: 0 0 15px rgba(135, 206, 235, 0.5);
+}
+
+.angle-btn:hover {
+    transform: translateY(-2px);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.scientific-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.main-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    border: none;
+    border-radius: 15px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-sparkle {
+    font-size: 14px;
+    /* No rotation animation - all sparkles stay static */
+}
+
+.fairy-btn {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.fairy-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.fairy-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.btn-scientific {
+    background: linear-gradient(135deg, #dda0dd, #9370db);
+    color: white;
+    font-size: 14px;
+    height: 50px;
+    box-shadow: 0 4px 15px rgba(221, 160, 221, 0.3);
+}
+
+.btn-scientific:hover {
+    background: linear-gradient(135deg, #e6a8e6, #a0522d);
+    box-shadow: 0 8px 25px rgba(221, 160, 221, 0.5);
+}
+
+.btn-number {
+    background: linear-gradient(135deg, #98fb98, #90ee90);
+    color: #2c1810;
+    font-weight: 600;
+}
+
+.btn-number:hover {
+    background: linear-gradient(135deg, #90ee90, #32cd32);
+    box-shadow: 0 8px 25px rgba(152, 251, 152, 0.4);
+}
+
+.btn-operator {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #2c1810;
+    font-weight: 600;
+}
+
+.btn-operator:hover {
+    background: linear-gradient(135deg, #ffa500, #ff8c00);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-equals {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+}
+
+.btn-equals:hover {
+    background: linear-gradient(135deg, #ff1493, #c71585);
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+}
+
+.btn-clear {
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    color: white;
+}
+
+.btn-clear:hover {
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+}
+
+.btn-zero {
+    grid-column: span 2;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .calculator {
+        padding: 20px;
+    }
+    
+    .btn {
+        height: 55px;
+        font-size: 16px;
+    }
+    
+    .btn-scientific {
+        height: 45px;
+        font-size: 12px;
+    }
+    
+    .current-operand {
+        font-size: 32px;
+    }
+    
+    .previous-operand {
+        font-size: 14px;
+    }
+    
+    .scientific-row {
+        gap: 6px;
+    }
+    
+    .main-buttons {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-container {
+        max-width: 100%;
+    }
+    
+    .btn {
+        height: 50px;
+        font-size: 14px;
+    }
+    
+    .btn-scientific {
+        height: 40px;
+        font-size: 11px;
+    }
+    
+    .current-operand {
+        font-size: 28px;
+    }
+    
+    .scientific-row {
+        gap: 4px;
+    }
+    
+    .main-buttons {
+        gap: 8px;
+    }
+}
+
+/* Animation for button press */
+@keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.btn:active {
+    animation: buttonPress 0.1s ease;
+}
+
+/* Glow effect for active buttons */
+.btn-scientific.active {
+    box-shadow: 0 0 20px rgba(221, 160, 221, 0.6);
+}
+
+/* Smooth transitions for mode changes */
+.scientific-row {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.scientific-row.ng-hide {
+    max-height: 0;
+    opacity: 0;
+}
+
+.scientific-row.ng-show {
+    max-height: 200px;
+    opacity: 1;
+}
+
+/* Magical hover effects */
+.fairy-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.fairy-btn:hover::before {
+    left: 100%;
+} 
